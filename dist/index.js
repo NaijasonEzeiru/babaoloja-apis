@@ -21,6 +21,5 @@ app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
 // app.use('/user', userRouter);
 app.listen(PORT, function () { return console.log('server running on port: ' + PORT); });
-await migrate(db, { migrationsFolder: 'drizzle' });
 export default app;
 //# sourceMappingURL=index.js.map
