@@ -12,25 +12,36 @@ import adminRouter from './routes/adminRouter.js';
 import { db } from './db/db.js';
 
 // app.use(cors(corsOptions));
+// app.use(
+// 	cors({
+// 		origin: [
+// 			'https://portfolio-project-tau-eight.vercel.app',
+// 			'http://localhost:3000'
+// 		],
+// 		credentials: true
+// 	})
+// );
+
+// const corsConfig = {
+// 	origin: true,
+// 	credentials: true
+// };
+
 app.use(
 	cors({
 		origin: [
-			'https://portfolio-project-tau-eight.vercel.app',
-			'http://localhost:3000'
-		],
-		credentials: true
+			'http://localhost:3000',
+			'https://portfolio-project-tau-eight.vercel.app/'
+		]
 	})
 );
 
-const corsConfig = {
-	origin: true,
-	credentials: true
-};
+// confirm
 
-app.options(
-	['https://portfolio-project-tau-eight.vercel.app', 'http://localhost:3000'],
-	cors(corsConfig)
-);
+// app.options(
+// 	['https://portfolio-project-tau-eight.vercel.app', 'http://localhost:3000'],
+// 	cors(corsConfig)
+// );
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
