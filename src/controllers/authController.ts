@@ -98,8 +98,9 @@ const loginUser = async (req: Request, res: Response) => {
 				{ expiresIn: '3d' }
 			);
 			res.cookie('access_token', accessToken, {
-				httpOnly: true,
-				secure: process.env.NODE_ENV === 'production'
+				httpOnly: false,
+				secure: process.env.NODE_ENV === 'production',
+				sameSite: 'none'
 			})
 				.status(201)
 				.json({ ...rest, Message: 'logged in successfully' });
@@ -145,8 +146,9 @@ const me = async (req: Request, res: Response) => {
 			);
 			return res
 				.cookie('access_token', accessToken, {
-					httpOnly: true,
-					secure: process.env.NODE_ENV === 'production'
+					httpOnly: false,
+					secure: process.env.NODE_ENV === 'production',
+					sameSite: 'none'
 				})
 				.status(201)
 				.json({ ...rest });

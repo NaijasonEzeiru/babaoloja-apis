@@ -149,8 +149,9 @@ var loginUser = function (req, res) { return __awaiter(void 0, void 0, void 0, f
                         role: rest.role
                     }, process.env.JWT_SECRET, { expiresIn: '3d' });
                     res.cookie('access_token', accessToken, {
-                        httpOnly: true,
-                        secure: process.env.NODE_ENV === 'production'
+                        httpOnly: false,
+                        secure: process.env.NODE_ENV === 'production',
+                        sameSite: 'none'
                     })
                         .status(201)
                         .json(__assign(__assign({}, rest), { Message: 'logged in successfully' }));
@@ -203,8 +204,9 @@ var me = function (req, res) { return __awaiter(void 0, void 0, void 0, function
                 }, process.env.JWT_SECRET, { expiresIn: '14d' });
                 return [2 /*return*/, res
                         .cookie('access_token', accessToken, {
-                        httpOnly: true,
-                        secure: process.env.NODE_ENV === 'production'
+                        httpOnly: false,
+                        secure: process.env.NODE_ENV === 'production',
+                        sameSite: 'none'
                     })
                         .status(201)
                         .json(__assign({}, rest))];
