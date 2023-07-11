@@ -22,16 +22,6 @@ app.use(
 	})
 );
 
-app.use(
-	cors({
-		origin: [
-			'https://portfolio-project-tau-eight.vercel.app',
-			'http://localhost:3000'
-		],
-		credentials: true
-	})
-);
-
 const corsConfig = {
 	origin: true,
 	credentials: true
