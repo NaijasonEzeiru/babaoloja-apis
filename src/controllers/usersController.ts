@@ -15,7 +15,7 @@ export const getUser = async (req: Request, res: Response) => {
 		const [user] = await db
 			.select()
 			.from(users)
-			.where(eq(users.id, +req.params.id));
+			.where(eq(users.id, req.params.id));
 		res.status(201).json(user);
 	} catch (err) {
 		res.status(500).json({ err, message: 'User not found' });
@@ -35,11 +35,11 @@ export const updateUser = async (req: Request, res: Response) => {
 		const [updatedUser] = await db
 			.update(users)
 			.set({})
-			.where(eq(users.id, +req.params.id))
+			.where(eq(users.id, req.params.id))
 			.returning({});
 		// const updatedUser = await prisma.user.update({
 		// 	where: {
-		// 		id: +req.params.id
+		// 		id: req.params.id
 		// 	},
 		// 	data: all
 		// });

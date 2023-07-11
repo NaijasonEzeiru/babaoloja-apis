@@ -95,7 +95,7 @@ export var addNewProduct = function (req, res) { return __awaiter(void 0, void 0
                 i = 0;
                 _b.label = 2;
             case 2:
-                if (!(i < req.files.length)) return [3 /*break*/, 6];
+                if (!(i < +req.files.length)) return [3 /*break*/, 6];
                 return [4 /*yield*/, cloudinary.uploader.upload(req.files[i].path, {
                         upload_preset: 'ecomm'
                     })];

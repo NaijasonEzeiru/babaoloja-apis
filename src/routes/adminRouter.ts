@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { addNewCategory } from '../controllers/adminController.js';
-import { verifyAdmin, verifyTokenAndAuth } from '../middlewares/verifyJWT.js';
+// import { verifyAdmin, verifyTokenAndAuth } from '../middlewares/verifyJWT.js';
 
 const router = Router();
 

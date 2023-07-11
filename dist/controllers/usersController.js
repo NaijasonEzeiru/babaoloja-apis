@@ -60,7 +60,7 @@ export var getUser = function (req, res) { return __awaiter(void 0, void 0, void
                 return [4 /*yield*/, db
                         .select()
                         .from(users)
-                        .where(eq(users.id, +req.params.id))];
+                        .where(eq(users.id, req.params.id))];
             case 1:
                 user = (_a.sent())[0];
                 res.status(201).json(user);
@@ -89,13 +89,13 @@ export var updateUser = function (req, res) { return __awaiter(void 0, void 0, v
                 return [4 /*yield*/, db
                         .update(users)
                         .set({})
-                        .where(eq(users.id, +req.params.id))
+                        .where(eq(users.id, req.params.id))
                         .returning({})];
             case 2:
                 updatedUser = (_a.sent())[0];
                 // const updatedUser = await prisma.user.update({
                 // 	where: {
-                // 		id: +req.params.id
+                // 		id: req.params.id
                 // 	},
                 // 	data: all
                 // });

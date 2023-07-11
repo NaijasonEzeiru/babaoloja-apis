@@ -7,7 +7,7 @@ import {
 	deleteProduct,
 	getProduct
 } from '../controllers/productsController.js';
-import { verifyAdmin, verifyTokenAndAuth } from '../middlewares/verifyJWT.js';
+// import { verifyAdmin, verifyTokenAndAuth } from '../middlewares/verifyJWT.js';
 
 const router = Router();
 

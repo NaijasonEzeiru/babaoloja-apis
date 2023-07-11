@@ -57,7 +57,8 @@ export const addNewProduct = async (req: Request, res: Response) => {
 			res.status(400).json({ message: 'All fields are required' });
 		}
 		let images = [];
-		for (let i = 0; i < req.files.length; i++) {
+
+		for (let i = 0; i < +req.files.length; i++) {
 			// console.log({ path: req.files[i].path });
 			const result = await cloudinary.uploader.upload(req.files[i].path, {
 				upload_preset: 'ecomm'
