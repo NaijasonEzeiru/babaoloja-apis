@@ -12,7 +12,15 @@ import adminRouter from './routes/adminRouter.js';
 import { db } from './db/db.js';
 
 // app.use(cors(corsOptions));
-app.use(cors({ origin: ['http://localhost:3000'], credentials: true }));
+app.use(
+	cors({
+		origin: [
+			'https://portfolio-project-tau-eight.vercel.app',
+			'http://localhost:3000'
+		],
+		credentials: true
+	})
+);
 
 app.use(
 	cors({
