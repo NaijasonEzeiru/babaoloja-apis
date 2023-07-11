@@ -25,6 +25,9 @@ app.use('/admin', adminRouter);
 // app.use('/user', userRouter);
 app.listen(PORT, () => console.log('server running on port: ' + PORT));
 
-await migrate(db, { migrationsFolder: 'drizzle' });
-
+// await migrate(db, { migrationsFolder: 'drizzle' });
+const mig = async () => {
+	migrate(db, { migrationsFolder: 'drizzle' });
+};
+mig();
 export default app;
