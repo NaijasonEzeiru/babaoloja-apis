@@ -89,7 +89,7 @@ export var addNewProduct = function (req, res) { return __awaiter(void 0, void 0
                     !negotiable ||
                     !userId ||
                     !req.files) {
-                    res.status(400).json({ message: 'All fields are required' });
+                    return [2 /*return*/, res.status(400).json({ message: 'All fields are required' })];
                 }
                 images = [];
                 i = 0;
@@ -127,7 +127,10 @@ export var addNewProduct = function (req, res) { return __awaiter(void 0, void 0
                     .returning()];
             case 7:
                 product = _b.sent();
-                return [2 /*return*/, res.status(201).json({ message: product })];
+                if (products) {
+                    return [2 /*return*/, res.status(201).json({ message: product })];
+                }
+                return [3 /*break*/, 9];
             case 8:
                 error_2 = _b.sent();
                 console.log(error_2);

@@ -54,7 +54,7 @@ export const addNewProduct = async (req: Request, res: Response) => {
 			!userId ||
 			!req.files
 		) {
-			res.status(400).json({ message: 'All fields are required' });
+			return res.status(400).json({ message: 'All fields are required' });
 		}
 		let images = [];
 
@@ -83,7 +83,9 @@ export const addNewProduct = async (req: Request, res: Response) => {
 				cloudinary_ids: images
 			})
 			.returning();
-		return res.status(201).json({ message: product });
+		if (products) {
+			return res.status(201).json({ message: product });
+		}
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ message: error });

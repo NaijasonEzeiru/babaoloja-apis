@@ -189,7 +189,13 @@ var me = function (req, res) { return __awaiter(void 0, void 0, void 0, function
                         .where(eq(users.id, id))];
             case 2:
                 user = (_d.sent())[0];
-                !user && res.status(401).json('Email address is not registered');
+                // !user && res.status(401).json('Email address is not registered');
+                if (!user) {
+                    console.log('no user');
+                    return [2 /*return*/, res
+                            .status(401)
+                            .json({ message: 'Email address is not registered' })];
+                }
                 passwordHash = user.passwordHash, rest = __rest(user, ["passwordHash"]);
                 accessToken = jwt.sign({
                     id: rest.id,

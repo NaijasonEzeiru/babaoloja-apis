@@ -1,7 +1,6 @@
 import { InferModel, relations } from 'drizzle-orm';
 import {
 	pgTable,
-	serial,
 	text,
 	varchar,
 	timestamp,

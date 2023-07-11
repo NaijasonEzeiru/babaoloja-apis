@@ -127,7 +127,13 @@ const me = async (req: Request, res: Response) => {
 				.select()
 				.from(users)
 				.where(eq(users.id, id));
-			!user && res.status(401).json('Email address is not registered');
+			// !user && res.status(401).json('Email address is not registered');
+			if (!user) {
+				console.log('no user');
+				return res
+					.status(401)
+					.json({ message: 'Email address is not registered' });
+			}
 			const { passwordHash, ...rest } = user;
 			const accessToken = jwt.sign(
 				{

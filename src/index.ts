@@ -7,18 +7,31 @@ import cors from 'cors';
 import productRouter from './routes/productsRouter.js';
 import authRouter from './routes/authRouter.js';
 import adminRouter from './routes/adminRouter.js';
-// import userRouter from './routes/userRouter.js';
+// import userRouter from './routes/userRouter.js'
 
 import { db } from './db/db.js';
 
 // app.use(cors(corsOptions));
+app.use(cors({ origin: ['http://localhost:3000'], credentials: true }));
+
 app.use(
 	cors({
 		origin: [
-			'http://localhost:3000, https://portfolio-project-tau-eight.vercel.app'
+			'https://portfolio-project-tau-eight.vercel.app',
+			'http://localhost:3000'
 		],
 		credentials: true
 	})
+);
+
+const corsConfig = {
+	origin: true,
+	credentials: true
+};
+
+app.options(
+	['https://portfolio-project-tau-eight.vercel.app', 'http://localhost:3000'],
+	cors(corsConfig)
 );
 
 app.use(express.json());
