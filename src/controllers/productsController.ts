@@ -67,7 +67,7 @@ export const addNewProduct = async (req: Request, res: Response) => {
 			images.push(result.secure_url);
 		}
 
-		let product = await db
+		let [product] = await db
 			.insert(products)
 			.values({
 				phone,

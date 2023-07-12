@@ -126,7 +126,7 @@ export var addNewProduct = function (req, res) { return __awaiter(void 0, void 0
                 })
                     .returning()];
             case 7:
-                product = _b.sent();
+                product = (_b.sent())[0];
                 if (products) {
                     return [2 /*return*/, res.status(201).json({ message: product })];
                 }
