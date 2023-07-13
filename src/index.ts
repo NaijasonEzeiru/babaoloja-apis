@@ -11,35 +11,35 @@ import adminRouter from './routes/adminRouter.js';
 
 import { db } from './db/db.js';
 
-const allowedOrigins = [
-	'https://portfolio-project-tau-eight.vercel.app',
-	'http://localhost:3000'
-];
-const corsOptions = {
-	origin: function (origin, callback) {
-		if (allowedOrigins.indexOf(origin) !== -1) {
-			callback(null, true);
-		} else {
-			callback(new Error('Not allowed by CORS'));
-		}
-	},
-	credentials: true,
-	headers: ['Content-Type']
-};
+// const allowedOrigins = [
+// 	'https://portfolio-project-tau-eight.vercel.app',
+// 	'http://localhost:3000'
+// ];
+// const corsOptions = {
+// 	origin: function (origin, callback) {
+// 		if (allowedOrigins.indexOf(origin) !== -1) {
+// 			callback(null, true);
+// 		} else {
+// 			callback(new Error('Not allowed by CORS'));
+// 		}
+// 	},
+// 	credentials: true,
+// 	headers: ['Content-Type']
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
-app.options('*', cors());
+// app.options('*', cors());
 
-// app.use(
-// 	cors({
-// 		origin: [
-// 			'https://portfolio-project-tau-eight.vercel.app',
-// 			'http://localhost:3000'
-// 		],
-// 		credentials: true
-// 	})
-// );
+app.use(
+	cors({
+		origin: [
+			'https://portfolio-project-tau-eight.vercel.app',
+			'http://localhost:3000'
+		],
+		credentials: true
+	})
+);
 
 // const corsConfig = {
 // 	origin: true,
