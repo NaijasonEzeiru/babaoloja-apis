@@ -49,18 +49,16 @@ var allowedOrigins = [
     'https://portfolio-project-tau-eight.vercel.app',
     'http://localhost:3000'
 ];
-var corsOptions = {
-    origin: function (origin, callback) {
-        if (allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        }
-        else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials: true
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+// 	origin: function (origin, callback) {
+// 		if (allowedOrigins.indexOf(origin) !== -1) {
+// 			callback(null, true);
+// 		} else {
+// 			callback(new Error('Not allowed by CORS'));
+// 		}
+// 	},
+// 	credentials: true
+// };
 // app.use(
 // 	cors({
 // 		origin: [
@@ -74,6 +72,10 @@ app.use(cors(corsOptions));
 // 	origin: true,
 // 	credentials: true
 // };
+app.use(cors({
+    origin: 'https://portfolio-project-tau-eight.vercel.app',
+    credentials: true
+}));
 // app.options(
 // 	['https://portfolio-project-tau-eight.vercel.app', 'http://localhost:3000'],
 // 	cors(corsConfig)
