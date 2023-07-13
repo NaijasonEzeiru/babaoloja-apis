@@ -41,6 +41,8 @@ app.use(
 	})
 );
 
+// app.options('*', cors());
+
 // const corsConfig = {
 // 	origin: true,
 // 	credentials: true
