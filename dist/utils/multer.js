@@ -1,7 +1,8 @@
 import { diskStorage } from 'multer';
+import path from 'path';
 var storage = diskStorage({
     destination: function (req, file, callback) {
-        callback(null, './uploads/');
+        callback(null, path.join(__dirname, '/uploads/'));
     },
     filename: function (req, file, callback) {
         callback(null, Date.now() + file.originalname);
