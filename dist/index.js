@@ -72,7 +72,6 @@ app.options('*', cors());
 // 		credentials: true
 // 	})
 // );
-// app.options('*', cors());
 // const corsConfig = {
 // 	origin: true,
 // 	credentials: true
