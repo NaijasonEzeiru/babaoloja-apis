@@ -99,8 +99,8 @@ const loginUser = async (req: Request, res: Response) => {
 			);
 			res.cookie('access_token', accessToken, {
 				httpOnly: false,
-				secure: process.env.NODE_ENV === 'production',
-				sameSite: 'none'
+				secure: process.env.NODE_ENV === 'production'
+				// sameSite: 'none'
 			})
 				.status(201)
 				.json({ ...rest, Message: 'logged in successfully' });
