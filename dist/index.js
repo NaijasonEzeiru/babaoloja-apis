@@ -43,7 +43,7 @@ import cors from 'cors';
 import productRouter from './routes/productsRouter.js';
 import authRouter from './routes/authRouter.js';
 import adminRouter from './routes/adminRouter.js';
-// import userRouter from './routes/userRouter.js'
+import userRouter from './routes/userRouter.js';
 import { db } from './db/db.js';
 var allowedOrigins = [
     'https://portfolio-project-tau-eight.vercel.app',
@@ -82,7 +82,7 @@ app.get('/', function (_req, res) {
 app.use('/products', productRouter);
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
-// app.use('/user', userRouter);
+app.use('/user', userRouter);
 app.listen(PORT, function () { return console.log('server running on port: ' + PORT); });
 // await migrate(db, { migrationsFolder: 'drizzle' });
 var mig = function () { return __awaiter(void 0, void 0, void 0, function () {

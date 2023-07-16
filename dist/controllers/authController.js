@@ -150,8 +150,9 @@ var loginUser = function (req, res) { return __awaiter(void 0, void 0, void 0, f
                     }, process.env.JWT_SECRET, { expiresIn: '3d' });
                     res.cookie('access_token', accessToken, {
                         httpOnly: false,
-                        secure: process.env.NODE_ENV === 'production'
-                        // sameSite: 'none'
+                        secure: process.env.NODE_ENV === 'production',
+                        sameSite: 'none',
+                        domain: 'portfolio-project-tau-eight.vercel.app'
                     })
                         .status(201)
                         .json(__assign(__assign({}, rest), { Message: 'logged in successfully' }));
@@ -206,7 +207,8 @@ var me = function (req, res) { return __awaiter(void 0, void 0, void 0, function
                         .cookie('access_token', accessToken, {
                         httpOnly: false,
                         secure: process.env.NODE_ENV === 'production',
-                        sameSite: 'none'
+                        sameSite: 'none',
+                        domain: 'portfolio-project-tau-eight.vercel.app'
                     })
                         .status(201)
                         .json(__assign({}, rest))];
