@@ -100,7 +100,8 @@ const loginUser = async (req: Request, res: Response) => {
 			res.cookie('access_token', accessToken, {
 				httpOnly: false,
 				secure: process.env.NODE_ENV === 'production',
-				sameSite: 'none'
+				sameSite: 'none',
+				domain: 'portfolio-project-tau-eight.vercel.app'
 			})
 				.status(201)
 				.json({ ...rest, Message: 'logged in successfully' });
@@ -148,7 +149,8 @@ const me = async (req: Request, res: Response) => {
 				.cookie('access_token', accessToken, {
 					httpOnly: false,
 					secure: process.env.NODE_ENV === 'production',
-					sameSite: 'none'
+					sameSite: 'none',
+					domain: 'portfolio-project-tau-eight.vercel.app'
 				})
 				.status(201)
 				.json({ ...rest });
