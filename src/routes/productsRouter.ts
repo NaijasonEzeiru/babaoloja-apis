@@ -14,8 +14,9 @@ const router = Router();
 const upload = multer({ storage: storage });
 
 router.post('/add-new-product', upload.array('images[]'), addNewProduct);
+router.get('/', getAllProducts);
+router.post('/del', deleteProduct);
 
-router.route('/:id').get(getProduct);
-router.route('/').get(getAllProducts);
+router.get('/:id', getProduct);
 
 export default router;

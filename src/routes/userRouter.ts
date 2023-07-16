@@ -4,8 +4,6 @@ import { Router } from 'express';
 
 const router = Router();
 
-router.route('/:id');
-// .get(verifyTokenAndAuth, getUser)
-// .put(verifyTokenAndAuth, updateUser);
+router.route('/:id').get(getUser).put(updateUser);
 
 export default router;

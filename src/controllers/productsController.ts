@@ -7,10 +7,9 @@ import cloudinary from '../utils/cloudinary.js';
 import { products } from '../db/schema/schema.js';
 import { db } from '../db/db.js';
 
-const unlinAsync = promisify(unlink);
+const unlinkAsync = promisify(unlink);
 
 export const getAllProducts = async (req: Request, res: Response) => {
-	console.log('getAllProducts');
 	try {
 		const allProducts = await db.query.products.findMany();
 		res.status(201).json(allProducts);
@@ -63,7 +62,7 @@ export const addNewProduct = async (req: Request, res: Response) => {
 			const result = await cloudinary.uploader.upload(req.files[i].path, {
 				upload_preset: 'ecomm'
 			});
-			await unlinAsync(req.files[i].path);
+			await unlinkAsync(req.files[i].path);
 			images.push(result.secure_url);
 		}
 
@@ -106,6 +105,7 @@ export const addNewProduct = async (req: Request, res: Response) => {
 // };
 
 export const deleteProduct = async (req: Request, res: Response) => {
+	console.log(req.body.id);
 	try {
 		const [product] = await db
 			.delete(products)
@@ -124,6 +124,8 @@ export const deleteProduct = async (req: Request, res: Response) => {
 };
 
 export const getProduct = async (req: Request, res: Response) => {
+	console.log('get-product');
+	console.log(req.params.id);
 	try {
 		const [product] = await db
 			.select()

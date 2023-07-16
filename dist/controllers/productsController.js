@@ -40,28 +40,25 @@ import { promisify } from 'util';
 import cloudinary from '../utils/cloudinary.js';
 import { products } from '../db/schema/schema.js';
 import { db } from '../db/db.js';
-var unlinAsync = promisify(unlink);
+var unlinkAsync = promisify(unlink);
 export var getAllProducts = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var allProducts, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log('getAllProducts');
-                _a.label = 1;
-            case 1:
-                _a.trys.push([1, 3, , 4]);
+                _a.trys.push([0, 2, , 3]);
                 return [4 /*yield*/, db.query.products.findMany()];
-            case 2:
+            case 1:
                 allProducts = _a.sent();
                 res.status(201).json(allProducts);
                 console.log(allProducts);
-                return [3 /*break*/, 4];
-            case 3:
+                return [3 /*break*/, 3];
+            case 2:
                 error_1 = _a.sent();
                 console.log(error_1);
                 res.status(500).json(error_1);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
@@ -101,7 +98,7 @@ export var addNewProduct = function (req, res) { return __awaiter(void 0, void 0
                     })];
             case 3:
                 result = _b.sent();
-                return [4 /*yield*/, unlinAsync(req.files[i].path)];
+                return [4 /*yield*/, unlinkAsync(req.files[i].path)];
             case 4:
                 _b.sent();
                 images.push(result.secure_url);
@@ -156,32 +153,35 @@ export var deleteProduct = function (req, res) { return __awaiter(void 0, void 0
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 6, , 7]);
+                console.log(req.body.id);
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 7, , 8]);
                 return [4 /*yield*/, db
                         .delete(products)
                         .where(eq(products.id, req.body.id))
                         .returning()];
-            case 1:
+            case 2:
                 product = (_a.sent())[0];
                 i = 0;
-                _a.label = 2;
-            case 2:
-                if (!(i < product.cloudinary_ids.length)) return [3 /*break*/, 5];
-                return [4 /*yield*/, cloudinary.uploader.destroy('user.cloudinary_id{imageName}')];
+                _a.label = 3;
             case 3:
-                _a.sent();
-                _a.label = 4;
+                if (!(i < product.cloudinary_ids.length)) return [3 /*break*/, 6];
+                return [4 /*yield*/, cloudinary.uploader.destroy('user.cloudinary_id{imageName}')];
             case 4:
+                _a.sent();
+                _a.label = 5;
+            case 5:
                 i++;
-                return [3 /*break*/, 2];
-            case 5: return [2 /*return*/, res
+                return [3 /*break*/, 3];
+            case 6: return [2 /*return*/, res
                     .status(200)
                     .json({ message: 'The product has been deleted successfully' })];
-            case 6:
+            case 7:
                 error_3 = _a.sent();
                 console.log(error_3);
                 return [2 /*return*/, res.status(500).json({ message: error_3 })];
-            case 7: return [2 /*return*/];
+            case 8: return [2 /*return*/];
         }
     });
 }); };
@@ -190,23 +190,27 @@ export var getProduct = function (req, res) { return __awaiter(void 0, void 0, v
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
+                console.log('get-product');
+                console.log(req.params.id);
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, db
                         .select()
                         .from(products)
                         .where(eq(products.id, req.params.id))];
-            case 1:
+            case 2:
                 product = (_a.sent())[0];
                 if (!product) {
                     return [2 /*return*/, res.status(400).json({ message: 'Product does not exist' })];
                 }
                 res.json(product);
-                return [3 /*break*/, 3];
-            case 2:
+                return [3 /*break*/, 4];
+            case 3:
                 error_4 = _a.sent();
                 console.log(error_4);
                 return [2 /*return*/, res.status(500).json({ message: 'Error: ' + (error_4 === null || error_4 === void 0 ? void 0 : error_4.message) })];
-            case 3: return [2 /*return*/];
+            case 4: return [2 /*return*/];
         }
     });
 }); };
