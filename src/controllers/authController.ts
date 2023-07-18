@@ -101,7 +101,7 @@ const loginUser = async (req: Request, res: Response) => {
 				httpOnly: false,
 				secure: process.env.NODE_ENV === 'production',
 				sameSite: 'none',
-				domain: 'portfolio-project-tau-eight.vercel.app'
+				domain: '.naijason.tech'
 			})
 				.status(201)
 				.json({ ...rest, Message: 'logged in successfully' });
@@ -150,7 +150,7 @@ const me = async (req: Request, res: Response) => {
 					httpOnly: false,
 					secure: process.env.NODE_ENV === 'production',
 					sameSite: 'none',
-					domain: 'portfolio-project-tau-eight.vercel.app'
+					domain: '.naijason.tech'
 				})
 				.status(201)
 				.json({ ...rest });
