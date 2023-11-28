@@ -8,10 +8,10 @@ config();
 
 // for migrations
 const sql = postgres(process.env.DATABASE_URL!, {
-	max: 1
+  max: 1
 });
 const db = drizzle(sql, { schema });
-// await migrate(db, { migrationsFolder: 'drizzle' });
+await migrate(db, { migrationsFolder: 'drizzle' });
 
 // for query purposes
 // const queryClient = postgres("postgres://postgres:adminadmin@0.0.0.0:5432/db");

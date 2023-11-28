@@ -2,10 +2,10 @@ import { diskStorage } from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-var __filename = fileURLToPath(import.meta.url);
-var __dirname = dirname(__filename);
-var storage = diskStorage({
-    destination: function (req, file, callback) {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const storage = diskStorage({
+    destination(req, file, callback) {
         callback(null, path.join(__dirname, '/uploads/'));
     },
     filename: function (req, file, callback) {

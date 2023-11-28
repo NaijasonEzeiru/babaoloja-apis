@@ -9,12 +9,10 @@ import authRouter from './routes/authRouter.js';
 import adminRouter from './routes/adminRouter.js';
 import userRouter from './routes/userRouter.js';
 
-import { db } from './db/db.js';
-
-const allowedOrigins = [
-	'https://portfolio-project-tau-eight.vercel.app',
-	'http://localhost:3000'
-];
+// const allowedOrigins = [
+//   'https://portfolio-project-tau-eight.vercel.app',
+//   'http://localhost:3000'
+// ];
 // const corsOptions = {
 // 	origin: function (origin, callback) {
 // 		if (allowedOrigins.indexOf(origin) !== -1) {
@@ -32,29 +30,29 @@ const allowedOrigins = [
 // app.options('*', cors());
 
 app.use(
-	cors({
-		origin: [
-			'https://portfolio-project-tau-eight.vercel.app',
-			'http://localhost:3000'
-		],
-		credentials: true
-	})
+  cors({
+    origin: [
+      'https://portfolio-project-tau-eight.vercel.app',
+      'http://localhost:3000'
+    ],
+    credentials: true
+  })
 );
 
 const corsConfig = {
-	origin: true,
-	credentials: true
+  origin: true,
+  credentials: true
 };
 
 app.options(
-	['https://portfolio-project-tau-eight.vercel.app', 'http://localhost:3000'],
-	cors(corsConfig)
+  ['https://portfolio-project-tau-eight.vercel.app', 'http://localhost:3000'],
+  cors(corsConfig)
 );
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.get('/', (_req, res: Response) => {
-	res.send('Up and running');
+  res.send('Up and running');
 });
 app.use('/products', productRouter);
 app.use('/auth', authRouter);
@@ -63,8 +61,8 @@ app.use('/user', userRouter);
 app.listen(PORT, () => console.log('server running on port: ' + PORT));
 
 // await migrate(db, { migrationsFolder: 'drizzle' });
-const mig = async () => {
-	migrate(db, { migrationsFolder: 'drizzle' });
-};
-mig();
+// const mig = async () => {
+// 	migrate(db, { migrationsFolder: 'drizzle' });
+// };
+// mig();
 export default app;
