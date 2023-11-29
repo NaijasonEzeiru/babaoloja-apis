@@ -31,10 +31,7 @@ import userRouter from './routes/userRouter.js';
 
 app.use(
   cors({
-    origin: [
-      'https://portfolio-project-tau-eight.vercel.app',
-      'http://localhost:3000'
-    ],
+    origin: ['https://portfolio.naijason.tech/', 'http://localhost:3000'],
     credentials: true
   })
 );
@@ -45,7 +42,7 @@ const corsConfig = {
 };
 
 app.options(
-  ['https://portfolio-project-tau-eight.vercel.app', 'http://localhost:3000'],
+  ['https://portfolio.naijason.tech/', 'http://localhost:3000'],
   cors(corsConfig)
 );
 

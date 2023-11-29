@@ -24,22 +24,24 @@ import userRouter from './routes/userRouter.js';
 // };
 // app.use(cors(corsOptions));
 // app.options('*', cors());
-app.use(cors({
-    origin: [
-        'https://portfolio-project-tau-eight.vercel.app',
-        'http://localhost:3000'
-    ],
+app.use(
+  cors({
+    origin: ['https://portfolio.naijason.tech/', 'http://localhost:3000'],
     credentials: true
-}));
+  })
+);
 const corsConfig = {
-    origin: true,
-    credentials: true
+  origin: true,
+  credentials: true
 };
-app.options(['https://portfolio-project-tau-eight.vercel.app', 'http://localhost:3000'], cors(corsConfig));
+app.options(
+  ['https://portfolio.naijason.tech/', 'http://localhost:3000'],
+  cors(corsConfig)
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.get('/', (_req, res) => {
-    res.send('Up and running');
+  res.send('Up and running');
 });
 app.use('/products', productRouter);
 app.use('/auth', authRouter);
