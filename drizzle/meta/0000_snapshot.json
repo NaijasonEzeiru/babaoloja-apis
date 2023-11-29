@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "db76c183-df92-4bd9-b3ce-28c236db9d94",
+  "id": "df155b78-7478-4e05-bc92-b34b4a49d62c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "categories": {
@@ -304,6 +304,12 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
+        },
+        "display_img": {
+          "name": "display_img",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},

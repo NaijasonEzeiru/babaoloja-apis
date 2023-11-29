@@ -12,6 +12,7 @@ const sql = postgres(process.env.DATABASE_URL!, {
 });
 const db = drizzle(sql, { schema });
 await migrate(db, { migrationsFolder: 'drizzle' });
+process.exit();
 
 // for query purposes
 // const queryClient = postgres("postgres://postgres:adminadmin@0.0.0.0:5432/db");

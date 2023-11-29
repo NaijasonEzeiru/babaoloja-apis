@@ -47,7 +47,8 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"email" varchar(120) NOT NULL,
 	"role" text DEFAULT 'user' NOT NULL,
 	"phone" varchar(20) NOT NULL,
-	"created_at" timestamp DEFAULT now() NOT NULL
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"display_img" text
 );
 
 DO $$ BEGIN

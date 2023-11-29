@@ -22,7 +22,7 @@ export const verifyJWT = async (token) => {
     }
     catch (error) {
         console.error('error');
-        // throw new Error('Your token has expired');
+        throw new Error('Your token has expired');
     }
 };
 //# sourceMappingURL=verifyToken.js.map
