@@ -1,5 +1,4 @@
 import express, { Express, Request, Response } from 'express';
-import { migrate } from 'drizzle-orm/postgres-js/migrator';
 const app: Express = express();
 // const corsOptions = require("./config/corsOptions")
 const PORT = process.env.PORT || 4000;
@@ -31,7 +30,7 @@ import userRouter from './routes/userRouter.js';
 
 app.use(
   cors({
-    origin: ['https://portfolio.naijason.tech/', 'http://localhost:3000'],
+    origin: ['https://portfolio.naijason.tech', 'http://localhost:3000'],
     credentials: true
   })
 );
@@ -42,7 +41,7 @@ const corsConfig = {
 };
 
 app.options(
-  ['https://portfolio.naijason.tech/', 'http://localhost:3000'],
+  ['https://portfolio.naijason.tech', 'http://localhost:3000'],
   cors(corsConfig)
 );
 

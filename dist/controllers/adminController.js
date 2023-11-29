@@ -11,7 +11,8 @@ export const addNewCategory = async (req, res) => {
         res.status(201).json({ message: cat });
     }
     catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
+        console.error(error);
+        res.status(500).json({ message: error });
     }
 };
 // exports.updateProduct = async (req: Request, res: Response) => {
